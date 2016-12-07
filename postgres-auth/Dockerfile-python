@@ -1,0 +1,10 @@
+FROM python:2.7-alpine
+
+RUN pip install bottle
+RUN pip install psycopg2
+
+COPY sample-api-postgres-auth.py .
+
+CMD [ "python", "./sample-api-postgres-auth.py" ]
+
+EXPOSE 8080

@@ -1,0 +1,13 @@
+postgres:
+  build: .
+  dockerfile: Dockerfile-db
+  environment:
+    POSTGRES_PASSWORD: password
+    POSTGRES_USER: postgres
+
+r-app:
+  build: .
+  dockerfile: Dockerfile-python
+  links: [postgres]
+  ports:
+    - "8080:8080"
