@@ -1,6 +1,5 @@
 postgres:
-  build: .
-  dockerfile: Dockerfile-db
+  image: postgres:9.5.3
   environment:
     POSTGRES_PASSWORD: password
     POSTGRES_USER: postgres
