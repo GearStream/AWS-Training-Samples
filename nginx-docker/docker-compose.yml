@@ -1,0 +1,25 @@
+postgres:
+  build: .
+  dockerfile: Dockerfile-db
+  environment:
+    POSTGRES_PASSWORD: password
+    POSTGRES_USER: postgres
+
+simple-service-1:
+  build: .
+  links: [postgres]
+
+simple-service-2:
+  build: .
+  links: [postgres]
+
+simple-service-3:
+  build: .
+  links: [postgres]
+
+nginx:
+  build: .
+  dockerfile: Dockerfile-nginx
+  links: [simple-service-1, simple-service-2, simple-service-3]
+  ports:
+    - "8080:8080"
