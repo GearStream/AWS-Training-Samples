@@ -1,5 +1,6 @@
 from bottle import *
 import logging
+import auth_util
 
 _api_version = 1.0
 
