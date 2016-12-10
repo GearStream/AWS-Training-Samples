@@ -2,7 +2,7 @@ import random
 import string
 import boto3
 
-dynamodb = boto3.resource('dynamodb')
+dynamodb = boto3.resource('dynamodb', region_name='eu-west-1')
 table = dynamodb.Table('docker-test')
 
 
