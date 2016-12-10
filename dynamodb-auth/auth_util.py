@@ -2,7 +2,11 @@ import random
 import string
 import boto3
 
-dynamodb = boto3.resource('dynamodb', region_name='eu-west-1')
+dynamodb = boto3.resource(
+    'dynamodb',
+    region_name='eu-west-1'
+)
+
 table = dynamodb.Table('docker-test')
 
 
@@ -26,7 +30,7 @@ def create_auth_token(username):
         Key={
             'user_name': username,
         },
-        UpdateExpression='SET token = :val1',
+        UpdateExpression='SET auth_token = :val1',
         ExpressionAttributeValues={
             ':val1': token
         }
@@ -44,7 +48,7 @@ def validate_auth_token(user_name, token_to_test):
     )
     item = response['Item']
 
-    return item['token'] == token_to_test
+    return item.get('auth_token') == token_to_test
 
 
 # Load the expected password from the db, check if it matches the supplied one for this user
@@ -56,7 +60,7 @@ def validate_password(user_name, password_to_test):
     )
     item = response['Item']
 
-    return item['password'] == password_to_test
+    return item.get('password') == password_to_test
 
 
 # Generate a random string of length 10
