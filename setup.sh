@@ -7,5 +7,5 @@ sudo yum install -y git
 
 git clone https://github.com/GearStream/AWS-Training-Samples.git
 
-sudo docker build -t gearstream/simple-service AWS-Training-Samples/nginx-docker/
+sudo docker build -t gearstream/simple-service AWS-Training-Samples/dynamodb-auth/
 sudo docker run -d -p 8080:8080 gearstream/simple-service
