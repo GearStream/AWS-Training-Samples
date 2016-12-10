@@ -44,7 +44,7 @@ def validate_auth_token(user_name, token_to_test):
     )
     item = response['Item']
 
-    return item.get('token') == token_to_test
+    return item['token'] == token_to_test
 
 
 # Load the expected password from the db, check if it matches the supplied one for this user
@@ -56,7 +56,7 @@ def validate_password(user_name, password_to_test):
     )
     item = response['Item']
 
-    return item.get['password'] == password_to_test
+    return item['password'] == password_to_test
 
 
 # Generate a random string of length 10
